@@ -9,7 +9,7 @@ type Props = {
 const NewsCard: React.FC<Props> = ({ slug }) => {
   return (
     <Link to="/news/$slug" params={{ slug }}>
-      <Card className="shadow-sm hover:shadow-md duration-200 transition-all">
+      <Card className="border-none shadow-none">
         <CardHeader className="mb-0 pb-0 border-b">
           <h2 className="text-xl line-clamp-1 font-semibold">Lorem ipsum dolor sit amet consectetur.</h2>
         </CardHeader>
