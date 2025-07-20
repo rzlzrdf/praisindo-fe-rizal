@@ -1,6 +1,6 @@
 import NewsCard from "@/components/custom/NewsCard";
 import React, { useEffect } from "react";
-import { useSearchNews } from "./hooks/news-hook";
+import { useSearchNews } from "../../hooks/news-hook";
 import SkeletonNews from "@/components/custom/SkeletonNews";
 import SearchBar from "@/components/custom/SearchBar";
 import Logo from "@/components/custom/Logo";

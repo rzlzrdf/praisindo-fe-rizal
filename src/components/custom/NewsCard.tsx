@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import React from "react";
-import type { NYTArticle } from "@/features/Home/hooks/news-hook";
+import type { NYTArticle } from "@/hooks/news-hook";
 import dayjs from "dayjs";
 
 type Props = {

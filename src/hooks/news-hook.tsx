@@ -1,4 +1,4 @@
-import { getAllNews, getSearchNews } from "@/lib/fetcher/news";
+import { getAllNews, getDetailNews, getSearchNews } from "@/lib/fetcher/news";
 import {
   keepPreviousData,
   useInfiniteQuery,
@@ -89,5 +89,14 @@ export const useSearchNews = (filters: { search: string }) => {
       return loaded < total ? allPages.length : undefined;
     },
     placeholderData: keepPreviousData,
+  });
+};
+
+export const useDetailNews = (url: string) => {
+  return useQuery<NYTArticleSearchResponse>({
+    queryKey: ["detailNews", url],
+    queryFn: () => getDetailNews(url),
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: false,
   });
 };
