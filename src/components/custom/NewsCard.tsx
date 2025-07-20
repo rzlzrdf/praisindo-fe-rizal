@@ -9,7 +9,7 @@ type Props = {
 
 const NewsCard: React.FC<Props> = ({ data }) => {
   return (
-    <Link to="/news/$slug" params={{ slug: data._id }} className="">
+    <Link target="_blank" to="/news/$slug" params={{ slug: data._id }} className="">
       <div className="border-none shadow-none w-full aspect-video p-0 relative text-white rounded-lg overflow-hidden hover:shadow-lg duration-300 hover:text-sky-100! group">
         <img
           src={

@@ -1,15 +1,44 @@
 import NewsCard from "@/components/custom/NewsCard";
-import React from "react";
+import React, { useEffect } from "react";
 import { useSearchNews } from "./hooks/news-hook";
 import SkeletonNews from "@/components/custom/SkeletonNews";
 import SearchBar from "@/components/custom/SearchBar";
 import Logo from "@/components/custom/Logo";
+import { useFilters } from "@/hooks/useFilters";
+import { Route } from "@/routes/index";
+import type { Filter } from "@/lib/utils";
 
 const Index: React.FC = () => {
-  const { data, isLoading } = useSearchNews({
-    page: 3,
-    search: "",
-  });
+  const { filters } = useFilters(Route.id);
+  const searchValue = (filters as Filter).search || "";
+
+  // Set the initial page value, e.g., 1
+  const { data, isLoading, fetchNextPage, hasNextPage, isFetchingNextPage } =
+    useSearchNews({
+      search: searchValue,
+    });
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && hasNextPage && !isFetchingNextPage) {
+          fetchNextPage();
+        }
+      },
+      { threshold: 1.0 }
+    );
+
+    const sentinel = document.getElementById("sentinel");
+    if (sentinel) {
+      observer.observe(sentinel);
+    }
+
+    return () => {
+      if (sentinel) {
+        observer.unobserve(sentinel);
+      }
+    };
+  }, [data, hasNextPage, isFetchingNextPage, fetchNextPage]);
 
   return (
     <>
@@ -41,7 +70,8 @@ const Index: React.FC = () => {
         </div>
       </div>
 
-      {/* Decoration */}
+      {/* Trigger when reach bottom */}
+      <div id="sentinel" className="h-4" />
     </>
   );
 };

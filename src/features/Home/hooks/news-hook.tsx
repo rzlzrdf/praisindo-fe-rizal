@@ -77,7 +77,7 @@ export const useNews = (filters: FilterNews) => {
   });
 };
 
-export const useSearchNews = (filters: { search: string; page: number }) => {
+export const useSearchNews = (filters: { search: string }) => {
   return useInfiniteQuery<NYTArticleSearchResponse>({
     queryKey: ["news", filters.search],
     initialPageParam: 0,
