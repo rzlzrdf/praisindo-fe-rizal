@@ -18,7 +18,7 @@ npm install
 npm run dev
 ```
 
-## How to Run in Development Mode
+## How to Run in Production Mode
 
 ```bash
 npm install
@@ -26,7 +26,7 @@ npm run build
 npm run preview
 ```
 
-## How to Run in Development Mode
+## How to Run Unit Test
 
 ```bash
 git checkout test/func_API // change to branch test/func_API
