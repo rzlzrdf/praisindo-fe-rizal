@@ -16,6 +16,7 @@
 ```bash
 npm install
 npm run dev
+```
 
 ## How to Run in Development Mode
 
@@ -23,6 +24,8 @@ npm run dev
 npm install
 npm run build
 npm run preview
+```
+
 ## How to Run in Development Mode
 
 ```bash
